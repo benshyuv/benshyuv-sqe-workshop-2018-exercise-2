@@ -118,7 +118,7 @@ function ExpressionStatement(json) {
         handleVar(name, line, value);
     }
     else if (json.expression.type == 'AssignmentExpression'){
-        let arr = handleAssignment(json)
+        let arr = handleAssignment(json);
         name = arr[0];
         line = arr[1];
     }

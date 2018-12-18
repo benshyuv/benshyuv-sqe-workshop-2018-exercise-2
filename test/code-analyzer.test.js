@@ -38,32 +38,19 @@ function testIfs(){
     it('is parsing a if loop correctly', () => {
         assert.equal(
             JSON.stringify(parseCode('function foo(x, y, z){\n' +
-                '    let a = x + 1;\n' +
-                '    let b = a + y;\n' +
-                '    let c = 0;\n' +
-                '    \n' +
+                '    let a = x + 1;\n' + '    let b = a + y;\n' + '    let c = 0;\n' + '    \n' +
                 '    if (b < z) {\n' +
-                '        c = c + 5;\n' +
-                '        return x + y + z + c;\n' +
+                '        c = c + 5;\n' + '        return x + y + z + c;\n' +
                 '    } else if (b < z * 2) {\n' +
-                '        c = c + x + 5;\n' +
-                '        return x + y + z + c;\n' +
-                '    } else {\n' +
-                '        c = c + z + 5;\n' +
-                '        return x + y + z + c;\n' +
-                '    }\n' +
-                '}\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
+                '        c = c + x + 5;\n' + '        return x + y + z + c;\n' +
+                '    } else {\n' + '        c = c + z + 5;\n' + '        return x + y + z + c;\n' + '    }\n' + '}\n')),
+            '[' + '"function foo(x, y, z){",' +
             '"    if (x + 1 + y < z) {",' +
             '"        return x + y + z + 5;",' +
             '"    else if (x + 1 + y < z * 2) {",' +
             '"        return x + y + z +  x + 5;",' +
             '"    } else {",' +
-            '"        return x + y + z +  z + 5;",' +
-            '"    }",' +
-            '"}"' +
-            ']'
+            '"        return x + y + z +  z + 5;",' + '"    }",' + '"}"' + ']'
         );
     });
 }
@@ -74,23 +61,15 @@ function testWhile(){
             JSON.stringify(parseCode('function foo(x, y, z){\n' +
                 '    let a = x + 1;\n' +
                 '    let b = a + y;\n' +
-                '    let c = 0;\n' +
-                '    \n' +
+                '    let c = 0;\n' + '    \n' +
                 '    while (a < z) {\n' +
                 '        c = a + b;\n' +
                 '        z = c * 2;\n' +
-                '    }\n' +
-                '    \n' +
-                '    return z;\n' +
-                '}\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
+                '    }\n' + '    \n' + '    return z;\n' + '}\n')),
+            '[' + '"function foo(x, y, z){",' +
             '"    while (x + 1 < z) {",' +
-            '"        z = (x + 1 + x + 1 + y) * 2;",' +
-            '"    }",' +
-            '"    return z;",' +
-            '"}"' +
-            ']'
+            '"        z = (x + 1 + x + 1 + y) * 2;",' + '"    }",' +
+            '"    return z;",' + '"}"' + ']'
         );
     });
 }
@@ -99,37 +78,20 @@ function testArr(){
     it('is parsing an array correctly', () => {
         assert.equal(
             JSON.stringify(parseCode('function foo(x, y, z){\n' +
-                '    let a = x + 1;\n' +
-                '    let b = a + y;\n' +
-                '    x[0] = 0;\n' +
-                '    \n' +
+                '    let a = x + 1;\n' + '    let b = a + y;\n' + '    x[0] = 0;\n' + '    \n' +
                 '    if (b < z) {\n' +
-                '        x[0] = x[0] + 5;\n' +
-                '        return x + y + z + x[0];\n' +
+                '        x[0] = x[0] + 5;\n' + '        return x + y + z + x[0];\n' +
                 '    } else if (b < z * 2) {\n' +
-                '        x[0] = x[0] + x + 5;\n' +
-                '        return x + y + z + x[0];\n' +
-                '    } else {\n' +
-                '        x[0] = x[0] + z + 5;\n' +
-                '        return x + y + z + x[0];\n' +
-                '    }\n' +
-                '}\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
+                '        x[0] = x[0] + x + 5;\n' + '        return x + y + z + x[0];\n' +
+                '    } else {\n' + '        x[0] = x[0] + z + 5;\n' +
+                '        return x + y + z + x[0];\n' + '    }\n' + '}\n')),
+            '[' + '"function foo(x, y, z){",' +
             '"    x[0] = 0;",' +
-            '"    if (x + 1 + y < z) {",' +
-            '"        x[0] = 5;",' +
-            '"        return x + y + z + 5;",' +
-            '"    else if (x + 1 + y < z * 2) {",' +
-            '"        x[0] =  x + 5;",' +
-            '"        return x + y + z +  x + 5;",' +
-            '"    } else {",' +
-            '"        x[0] =  z + 5;",' +
+            '"    if (x + 1 + y < z) {",' + '"        x[0] = 5;",' + '"        return x + y + z + 5;",' +
+            '"    else if (x + 1 + y < z * 2) {",' + '"        x[0] =  x + 5;",' + '"        return x + y + z +  x + 5;",' +
+            '"    } else {",' + '"        x[0] =  z + 5;",' +
             '"        return x + y + z +  z + 5;",' +
-            '"    }",' +
-            '"}"' +
-            ']'
-        );
+            '"    }",' + '"}"' + ']' );
     });
 }
 
@@ -139,32 +101,18 @@ function testBoolean(){
             JSON.stringify(parseCode('function foo(x, y, z){\n' +
                 '    let a = x + 1;\n' +
                 '    let b = a + y;\n' +
-                '    let found = true;\n' +
-                '    \n' +
+                '    let found = true;\n' + '    \n' +
                 '    if (found) {\n' +
-                '        z = z + 5;\n' +
-                '        return x + y + z + z;\n' +
+                '        z = z + 5;\n' + '        return x + y + z + z;\n' +
                 '    } else if (!found) {\n' +
-                '        b = b + x + 5;\n' +
-                '        return x + y + z + b;\n' +
-                '    } else {\n' +
-                '        b = b + z + 5;\n' +
-                '        return x + y + z + b;\n' +
-                '    }\n' +
-                '}\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
+                '        b = b + x + 5;\n' + '        return x + y + z + b;\n' +
+                '    } else {\n' + '        b = b + z + 5;\n' + '        return x + y + z + b;\n' + '    }\n' + '}\n')),
+            '[' + '"function foo(x, y, z){",' +
             '"    if () {",' +
-            '"        z = z + 5;",' +
-            '"        return x + y + z + z;",' +
-            '"    else if (!) {",' +
-            '"        return x + y + z + x +  y + x + 6;",' +
-            '"    } else {",' +
-            '"        return x + y + z + x +  y + z + 6;",' +
-            '"    }",' +
-            '"}"' +
-            ']'
-        );
+            '"        z = z + 5;",' + '"        return x + y + z + z;",' +
+            '"    else if (!) {",' + '"        return x + y + z + x +  y + x + 6;",' +
+            '"    } else {",' + '"        return x + y + z + x +  y + z + 6;",' + '"    }",' +
+            '"}"' + ']' );
     });
 }
 
@@ -209,29 +157,17 @@ function testFunc(){
                 '    let low, high, mid;\n' +
                 '    low = 0;\n' +
                 '    high = n - 1;\n' +
-                '    while (low <= high) {\n' +
-                '        mid = (low + high)/2;\n' +
-                '        if (X < V[mid])\n' +
-                '            high = mid - 1;\n' +
-                '        else if (X > V[mid])\n' +
-                '            low = mid + 1;\n' +
-                '        else\n' +
-                '            return mid;\n' +
-                '    }\n' +
-                '    return -1;\n' +
-                '}')),
-            '[' +
-            '"function binarySearch(X, V, n){",' +
+                '    while (low <= high) {\n' + '        mid = (low + high)/2;\n' +
+                '        if (X < V[mid])\n' + '            high = mid - 1;\n' +
+                '        else if (X > V[mid])\n' + '            low = mid + 1;\n' +
+                '        else\n' + '            return mid;\n' +
+                '    }\n' + '    return -1;\n' + '}')),
+            '[' + '"function binarySearch(X, V, n){",' +
             '"    while (0 <= n - 1) {",' +
             '"            if (X < V[ n - 1/ 2])",' +
             '"            else if (X > V[ n - 1/ 2])",' +
-            '"        else",' +
-            '"            return (n - 1/ 2;",' +
-            '"    }",' +
-            '"    return -1;",' +
-            '"}"' +
-            ']'
-        );
+            '"        else",' + '"            return (n - 1/ 2;",' +
+            '"    }",' + '"    return -1;",' + '"}"' + ']' );
     });
 }
 
@@ -242,24 +178,16 @@ function testGlobal(){
                 'function foo(x, y, z){\n' +
                 '    let a = x + 1;\n' +
                 '    let b = a + y;\n' +
-                '    let c = 0;\n' +
-                '    \n' +
+                '    let c = 0;\n' + '    \n' +
                 '    while (a < z) {\n' +
                 '        c = a + b;\n' +
-                '        z = c * 2;\n' +
-                '    }\n' +
-                '    \n' +
-                '    return t;\n' +
-                '}\n')),
-            '[' +
-            '"let t = 5;",' +
+                '        z = c * 2;\n' + '    }\n' + '    \n' +
+                '    return t;\n' + '}\n')),
+            '[' + '"let t = 5;",' +
             '"function foo(x, y, z){",' +
             '"    while (x + 1 < z) {",' +
-            '"        z = (x + 1 + x + 1 + y) * 2;",' +
-            '"    }",' +
-            '"    return t;",' +
-            '"}"' +
-            ']'
+            '"        z = (x + 1 + x + 1 + y) * 2;",' + '"    }",' +
+            '"    return t;",' + '"}"' + ']'
         );
     });
 }
@@ -271,24 +199,16 @@ function testNull(){
                 'function foo(x, y, z){\n' +
                 '    let a = x + 1;\n' +
                 '    let b = a + y;\n' +
-                '    let c = null;\n' +
-                '    \n' +
+                '    let c = null;\n' + '    \n' +
                 '    while (a < z) {\n' +
                 '        c = a + b;\n' +
-                '        z = c * 2;\n' +
-                '    }\n' +
-                '    \n' +
-                '    return t;\n' +
-                '}\n')),
-            '[' +
-            '"let t = null;",' +
+                '        z = c * 2;\n' + '    }\n' + '    \n' +
+                '    return t;\n' + '}\n')),
+            '[' + '"let t = null;",' +
             '"function foo(x, y, z){",' +
             '"    while (x + 1 < z) {",' +
             '"        z = (x + 1 + x + 1 + y) * 2;",' +
-            '"    }",' +
-            '"    return t;",' +
-            '"}"' +
-            ']'
+            '"    }",' + '"    return t;",' + '"}"' + ']'
         );
     });
 }
@@ -338,24 +258,17 @@ function testIdentifier(){
             JSON.stringify(parseCode('function foo(x, y, z){\n' +
                 '    let a = x\n' +
                 '    let b = a + y;\n' +
-                '    let c = 0;\n' +
-                '    \n' +
+                '    let c = 0;\n' + '    \n' +
                 '    while (a < z) {\n' +
                 '        c = a + b;\n' +
                 '        z = c * 2;\n' +
-                '    }\n' +
-                '    \n' +
+                '    }\n' + '    \n' +
                 '    return z;\n' +
-                '}\n' +
-                '\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
+                '}\n' + '\n')),
+            '[' + '"function foo(x, y, z){",' +
             '"    while (x < z) {",' +
-            '"        z = (x + x + y) * 2;",' +
-            '"    }",' +
-            '"    return z;",' +
-            '"}"' +
-            ']'
+            '"        z = (x + x + y) * 2;",' + '"    }",' +
+            '"    return z;",' + '"}"' + ']'
         );
     });
 }
@@ -366,23 +279,17 @@ function testUpdate(){
             JSON.stringify(parseCode('function foo(x, y, z){\n' +
                 '    let a = x + 1;\n' +
                 '    let b = a + y;\n' +
-                '    let c = 0;\n' +
-                '    \n' +
+                '    let c = 0;\n' + '    \n' +
                 '    while (a < z) {\n' +
                 '        c++;\n' +
                 '        z = c * 2;\n' +
-                '    }\n' +
-                '    \n' +
+                '    }\n' + '    \n' +
                 '    return t;\n' +
                 '}\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
+            '[' + '"function foo(x, y, z){",' +
             '"    while (x + 1 < z) {",' +
-            '"        z = 2;",' +
-            '"    }",' +
-            '"    return t;",' +
-            '"}"' +
-            ']'
+            '"        z = 2;",' + '"    }",' +
+            '"    return t;",' + '"}"' + ']'
         );
     });
 }
@@ -439,12 +346,10 @@ function testParenthesis(){
                 '    \n' +
                 '    return z;\n' +
                 '}\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
+            '[' + '"function foo(x, y, z){",' +
             '"    while (x + 1 < z)",' +
             '"        return z;",' +
-            '"}"' +
-            ']'
+            '"}"' + ']'
         );
     });
 }
@@ -462,12 +367,9 @@ function testPrefix(){
                 '    \n' +
                 '    return z;\n' +
                 '}\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
-            '"    while (x + 1 < z)",' +
-            '"        return z;",' +
-            '"}"' +
-            ']'
+            '[' + '"function foo(x, y, z){",' +
+            '"    while (x + 1 < z)",' + '"        return z;",' +
+            '"}"' + ']'
         );
     });
 }
@@ -478,27 +380,18 @@ function testIf(){
             JSON.stringify(parseCode('function foo(x, y, z){\n' +
                 '    let a = x + 1;\n' +
                 '    let b = a + y;\n' +
-                '    let c = 0;\n' +
-                '    \n' +
+                '    let c = 0;\n' + '    \n' +
                 '    if (b < z) {\n' +
                 '        c = c + 5;\n' +
-                '        return x + y + z + c;\n' +
-                '    } \n' +
+                '        return x + y + z + c;\n' + '    } \n' +
                 '    else if (b < z * 2) {\n' +
-                '        c = c + x + 5;\n' +
-                '        return x + y + z + c;\n' +
-                '    }\n' +
-                '}\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
-            '"    if (x + 1 + y < z) {",' +
-            '"        return x + y + z + 5;",' +
+                '        c = c + x + 5;\n' + '        return x + y + z + c;\n' +
+                '    }\n' + '}\n')),
+            '[' + '"function foo(x, y, z){",' +
+            '"    if (x + 1 + y < z) {",' + '"        return x + y + z + 5;",' +
             '"     else if (x + 1 + y < (z) * 2) {",' +
-            '"        return x + y + z +  x + 5;",' +
-            '"        }",' +
-            '"}"' +
-            ']'
-        );
+            '"        return x + y + z +  x + 5;",' + '"        }",' +
+            '"}"' + ']' );
     });
 }
 
@@ -536,10 +429,8 @@ function testToDelete(){
                 '        return x + y + z + c;\n' +
                 '    } \n' +
                 '}\n')),
-            '[' +
-            '"function foo(x, y, z){",' +
-            '"    if (a + y < z) {",' +
-            '"        return x + y + z + 5;",' +
+            '[' + '"function foo(x, y, z){",' +
+            '"    if (a + y < z) {",' + '"        return x + y + z + 5;",' +
             '"}"' +
             ']'
         );
